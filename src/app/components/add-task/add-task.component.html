@@ -1,23 +1,37 @@
-<form [formGroup]="taskForm">
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
 
     <div class="mb-3">
         <label class="form-label">Title</label>
         <input type="text" class="form-control" formControlName="title">
+
+        <div *ngIf="titleFormControl.touched && titleFormControl.errors?.['required']" class="mt-2 alert alert-danger" role="alert">
+            Title is Required!
+        </div>
+
     </div>
 
     <div class="mb-3">
         <label class="form-label">Description</label>
-        <textarea class="form-control" rows="3"  formControlName="desription"></textarea>
+        <textarea class="form-control" rows="3"  formControlName="description"></textarea>
+        <div *ngIf="descriptionFormControl.touched && descriptionFormControl.errors?.['required']" class="mt-2 alert alert-danger" role="alert">
+            Description is Required!
+        </div>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Task Date</label>
-        <input type="datetime-date" class="form-control" formControlName="task_date">
+        <input type="datetime-local" class="form-control" formControlName="task_date">
+        <div *ngIf="taskDateFormControl.touched && taskDateFormControl.errors?.['required']" class="mt-2 alert alert-danger" role="alert">
+            Task Date is Required!
+        </div>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Category</label>
         <input type="text" class="form-control"  formControlName="category">
+        <div *ngIf="categoryFormControl.touched && categoryFormControl.errors?.['required']" class="mt-2 alert alert-danger" role="alert">
+            Category is Required!
+        </div>
     </div>
 
     <div class="mb-3">
@@ -29,6 +43,9 @@
             <option value="high">High</option>
 
         </select>
+        <div *ngIf="priorityLevelFormControl.touched && priorityLevelFormControl.errors?.['required']" class="mt-2 alert alert-danger" role="alert">
+            Priority Level is Required!
+        </div>
     </div>
 
     <div class="mb-3">
@@ -40,8 +57,11 @@
             <option value="completed">Completed</option>
 
         </select>
+        <div *ngIf="progressLevelFormControl.touched && progressLevelFormControl.errors?.['required']" class="mt-2 alert alert-danger" role="alert">
+            Progress Level is Required!
+        </div>
     </div>
 
-    <button type="submit">press</button>
+    <button type="submit" [disabled]="taskForm.invalid" class="btn btn-primary">Submit</button>
 
-</form>>
+</form>

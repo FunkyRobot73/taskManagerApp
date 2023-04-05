@@ -45,6 +45,7 @@ export class AddTaskComponent {
   }
 
   onSubmit() {
-
+    console.log(this.taskForm.value);
+    this.taskForm.reset();
   }
 }

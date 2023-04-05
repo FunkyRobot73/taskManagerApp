@@ -5,7 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home'},
+  {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'tasks', component: TasksComponent},
   {path: 'add-task', component: AddTaskComponent}
