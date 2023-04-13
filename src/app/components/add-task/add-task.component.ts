@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { TaskComponent } from '../task/task.component';
 import { TasksService } from 'src/app/services/tasks.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-task',
@@ -12,7 +13,8 @@ export class AddTaskComponent {
 
   taskForm;
 
-  constructor(private formBuilder:FormBuilder, private taskService:TasksService){
+  constructor(private formBuilder:FormBuilder, private taskService:TasksService, private router:Router){
+    
     this.taskForm = formBuilder.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -54,6 +56,7 @@ export class AddTaskComponent {
       console.log(result)
       this.taskForm.reset();
       alert('Student was created successfully!');
+      this.router.navigateByUrl("tasks");
     })
   }
 }
