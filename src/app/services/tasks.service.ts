@@ -9,10 +9,21 @@ import { Itask } from '../inerfaces/itask';
   providedIn: 'root'
 })
 export class TasksService {
+  url = "http://localhost:3000/tasks";
 
   constructor(private http:HttpClient) { }
   
   getTasks() {
-    return this.http.get<Itask[]>("http://localhost:3000/tasks")
+    return this.http.get<Itask[]>(this.url)
+  }
+
+  
+
+  deleteTask(task_id:number) {
+    return this.http.delete<Itask>(this.url + "/" + task_id);
+  }
+
+  createTask(data:any) {
+    return this.http.post<Itask>(this.url, data);
   }
 }
