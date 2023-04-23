@@ -9,7 +9,7 @@ import { Itask } from '../inerfaces/itask';
   providedIn: 'root'
 })
 export class TasksService {
-  url = "http://localhost:3000/tasks";
+  url = "http://localhost:3001/tasks";
 
   constructor(private http:HttpClient) { }
   
